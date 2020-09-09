@@ -1,4 +1,4 @@
-"""Individual
+""" Individual
 
 The individual of n x n grid world which can be either
 zombie or creatures.
