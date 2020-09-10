@@ -1,6 +1,6 @@
 import numpy as np
 
-from src.individual import *
+from src.Individual import *
 
 """ World
 
@@ -114,13 +114,46 @@ class World:
             # Final position of the zombie
             self.map[zombie.x_coord][zombie.y_coord] = zombie_population_index
             
-    def stats(self) -> None:
-        """ Print out the stats of simulation
+    def get_stats(self) -> tuple:
+        """ Get zombie stats
 
-        This method print the score of zombies and their position
+        Returns:
+            int  : Total zombie scores
+            list : List of zombie final positions
         """
-        
 
+        # Zombie Score
+        score = 0
+
+        # Zombie Positions
+        positions = []
+
+
+        for individual in self.population:
+            if (individual.is_zombie):
+                score += individual.score
+                positions.append({ 'x': individual.x_coord, 'y': individual.y_coord })
+
+        return (score, positions)
+
+    def get_population(self) -> list:
+        """ Get world population
+
+        Returns:
+            list : List of individuals
+        """
+
+        return self.population
+
+    def get_queue(self) -> list:
+        """ Get list of zombies waiting for action
+
+        Returns:
+            list : List of zombies
+        """
+
+        return self.queue
+        
     def __enqueue(self, individual: Individual) -> None:
         """ Add individual to the action queue.
 
