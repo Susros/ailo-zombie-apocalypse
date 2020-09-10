@@ -114,6 +114,13 @@ class World:
             # Final position of the zombie
             self.map[zombie.x_coord][zombie.y_coord] = zombie_population_index
             
+    def stats(self) -> None:
+        """ Print out the stats of simulation
+
+        This method print the score of zombies and their position
+        """
+        
+
     def __enqueue(self, individual: Individual) -> None:
         """ Add individual to the action queue.
 
